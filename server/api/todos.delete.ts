@@ -1,7 +1,9 @@
 import Surreal from 'surrealdb.js'
 import { Todo } from '../../types'
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
+  const body = await readBody(event)
+
   try {
     const db = new Surreal('http://surrealdb:8000/rpc')
 
@@ -11,6 +13,8 @@ export default defineEventHandler(async () => {
     })
 
     await db.use({ ns: 'test', db: 'test' })
+
+    await db.delete(body.id)
 
     const todos = await db.select<Todo>('todos')
 
