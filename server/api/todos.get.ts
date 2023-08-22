@@ -11,7 +11,7 @@ export default defineEventHandler(async () => {
 
     await db.use({ ns: 'test', db: 'test' })
 
-    const data = await db.query("SELECT * FROM todos")
+    const data = await db.select('todos')
 
     return { data }
   } catch (e) {
