@@ -1,0 +1,18 @@
+{
+  "name": "nuxt-surreal-todo",
+  "devDependencies": {
+    "@nuxt/devtools": "^0.8.0",
+    "nuxt": "^3.6.5",
+    "surrealdb.js": "^0.8.4"
+  },
+  "dependencies": {},
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview",
+    "start": "node .output/server/index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
