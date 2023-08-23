@@ -1,17 +1,8 @@
-import Surreal from 'surrealdb.js'
-import { Todo } from '../../types'
+import { db } from '@/server/db'
+import { Todo } from '@/app/types'
 
 export default defineEventHandler(async () => {
   try {
-    const db = new Surreal('http://surrealdb:8000/rpc')
-
-    await db.signin({
-      user: 'root',
-      pass: 'root',
-    })
-
-    await db.use({ ns: 'test', db: 'test' })
-
     const todos = await db.select<Todo>('todos')
 
     return {
