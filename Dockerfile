@@ -1,8 +1,8 @@
 FROM node:lts
 
-WORKDIR /web
+WORKDIR /var/nuxt-surreal-todo
 
-COPY ./package*.json /web
+COPY ./package*.json /var/nuxt-surreal-todo
 
 RUN npm install && npm cache clean --force
 

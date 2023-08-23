@@ -13,8 +13,8 @@ services:
       - 24678:24678
       - 3000:3000
     volumes:
-      - .:/web
-      - /web/node_modules
+      - .:/var/nuxt-surreal-todo
+      - /var/nuxt-surreal-todo/node_modules
 
   surrealdb:
     env_file:
