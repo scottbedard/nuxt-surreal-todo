@@ -22,7 +22,7 @@
         <form @submit.prevent="onCreate">
           <input
             v-model="input"
-            class="h-16 px-6 w-full"
+            class="h-16 outline-none px-6 w-full"
             placeholder="What do you need to do?" />
         </form>
       </div>
@@ -37,8 +37,17 @@ const todos = ref(data.value?.todos ?? [])
 
 const input = ref('')
 
-function onCreate() {
-  console.log('hey')
+async function onCreate() {
+  const res = await $fetch('/api/todos', {
+    body: { description: input.value },
+    method: 'post',
+  })
+
+  if (res.todo) {
+    todos.value.push(res.todo)
+
+    input.value = ''
+  }
 }
 
 async function onDelete(id: string) {

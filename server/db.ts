@@ -9,12 +9,20 @@ export const db = new class {
     this.db = new Surreal('http://surrealdb:8000/rpc')
   }
 
-  async delete(...args: Parameters<Surreal['delete']>) {
+  async create<T extends Record<string, unknown>, U extends Record<string, unknown> = T>(thing: string, data?: U) {
     if (!this.ready) {
       await this.init()
     }
 
-    return this.db.delete(...args)
+    return await this.db.create<T, U>(thing, data)
+  }
+
+  async delete<T extends Record<string, unknown> = Record<string, unknown>>(thing: string) {
+    if (!this.ready) {
+      await this.init()
+    }
+
+    return await this.db.delete<T>(thing)
   }
 
   async init() {
@@ -28,11 +36,11 @@ export const db = new class {
     this.ready = true
   }
 
-  async select<T extends Record<string, unknown>>(...args: Parameters<Surreal['select']>) {
+  async select<T extends Record<string, unknown>>(thing: string) {
     if (!this.ready) {
       await this.init()
     }
 
-    return this.db.select<T>(...args)
+    return await this.db.select<T>(thing)
   }
 }
