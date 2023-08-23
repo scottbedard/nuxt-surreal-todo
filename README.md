@@ -1,7 +1,5 @@
 # nuxt-surreal-todo
 
-> *Note:* This scaffolding is not quite done, check back later
-
 A simple todo application using [Nuxt](https://nuxt.com/) and [SurrealDB](https://surrealdb.com/). To get started, install [Docker Compose](https://docs.docker.com/compose/install/) and run the following.
 
 ```bash
